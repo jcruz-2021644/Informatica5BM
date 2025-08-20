@@ -64,8 +64,8 @@ public class Controlador extends HttpServlet {
 
                     request.setAttribute("hogares", listaHogaresB);
                     request.getRequestDispatcher("/Index/vistahogaradmin.jsp").forward(request, response);
-
                     break;
+
                 case "Agregar":
                     String tipoHogar = request.getParameter("txtTipoHogar");
                     String ubicacion = request.getParameter("txtUbicacion");
@@ -76,7 +76,7 @@ public class Controlador extends HttpServlet {
                     hogares.setPrecio(precioC);
                     hogares.setCodigoProveedor(CodProv);
                     hogaresDAO.agregar(hogares);
-                    if (proveedores != null) {
+                    if (hogares != null) {
                         request.getRequestDispatcher("Controlador?menu=Hogar&accion=Listar").forward(request, response);
                     } else {
                         System.out.println("No sale");
@@ -86,10 +86,11 @@ public class Controlador extends HttpServlet {
                 case "Editar":
                     int idEditar = Integer.parseInt(request.getParameter("id"));
                     Hogares hogaresEditar = hogaresDAO.buscar(idEditar);
-                    request.setAttribute("hogares", hogaresEditar);
+                    request.setAttribute("hogar", hogaresEditar);  
                     request.setAttribute("hogares", hogaresDAO.listar());
                     request.getRequestDispatcher("/Index/vistahogaradmin.jsp").forward(request, response);
-                    break;
+                    return;
+
                 case "Actualizar":
                     int codigoHogar = Integer.parseInt(request.getParameter("txtCodigoHogar"));
                     String nuevoTipoHogar = request.getParameter("txtTipoHogar");
@@ -105,9 +106,9 @@ public class Controlador extends HttpServlet {
 
                     System.out.println("Filas actualizadas: " + filas);
 
-                    request.setAttribute("proveedores", proveedoresDAO.listar());
-                    request.getRequestDispatcher("/Index/vistaproveedoradmin.jsp").forward(request, response);
-                    break;
+                    request.getRequestDispatcher("Controlador?menu=Hogar&accion=Listar").forward(request, response);
+                    return;
+
                 case "Eliminar":
                     String idEliminar = request.getParameter("id");
                     if (idEliminar != null && !idEliminar.trim().isEmpty()) {
@@ -117,25 +118,25 @@ public class Controlador extends HttpServlet {
                             int resultado = hogaresDAO.eliminar(codigo);
 
                             if (resultado > 0) {
-                                request.setAttribute("mensaje", "Proveedor eliminado exitosamente");
+                                request.setAttribute("mensaje", "Hogar eliminado exitosamente");
                             } else {
-                                request.setAttribute("error", "Error al eliminar el Proveedor");
+                                request.setAttribute("error", "Error al eliminar el Hogar");
                             }
 
                         } catch (NumberFormatException e) {
-                            request.setAttribute("error", "ID de Proveedor inválido");
+                            request.setAttribute("error", "ID de Hogar inválido");
                         }
 
-                        response.sendRedirect("Controlador?menu=Proveedor&accion=Listar");
+                        response.sendRedirect("Controlador?menu=Hogar&accion=Listar");
                         return;
                     }
                     break;
+
                 default:
                     System.out.println("No se encontro");
             }
             request.getRequestDispatcher("/Index/vistahogaradmin.jsp").forward(request, response);
-        } else if (menu.equals(
-                "Proveedor")) {
+        } else if (menu.equals("Proveedor")) {
             switch (accion) {
                 case "Listar":
                     List<Proveedores> listaProveedores = proveedoresDAO.listar();
@@ -187,6 +188,7 @@ public class Controlador extends HttpServlet {
                     request.setAttribute("proveedor", proveedorEditar);
                     request.setAttribute("proveedores", proveedoresDAO.listar());
                     request.getRequestDispatcher("/Index/vistaproveedoradmin.jsp").forward(request, response);
+                    
                     break;
                 case "Actualizar":
                     int codigoProveedor = Integer.parseInt(request.getParameter("txtCodigoProveedor"));
@@ -232,9 +234,10 @@ public class Controlador extends HttpServlet {
                     System.out.println("No se encontro");
             }
             request.getRequestDispatcher("/Index/vistaproveedoradmin.jsp").forward(request, response);
-        } else if (menu.equals(
-                "VistaAdmin")) {
+        } else if (menu.equals("VistaAdmin")) {
             request.getRequestDispatcher("Index/vistaadmin.jsp").forward(request, response);
+        } else if (menu.equals("Index")) {
+            request.getRequestDispatcher("index.jsp").forward(request, response);
         }
 
     }

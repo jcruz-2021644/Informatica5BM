@@ -1,5 +1,4 @@
-<%-- Document : vistaproductoadmin Created on : 22 jul 2025, 13:12:45 Author : PC --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="es">
@@ -8,148 +7,131 @@
         <meta charset="UTF-8">
         <meta https-equiv=" X-UA-Compatible" content="IE-edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>CRUD_Producto</title>
-        <link rel="icon" type="image/x-icon" href="../Images/Logo_K.C.png">
-        <link rel="stylesheet" href="../Styles/vistaproductoadmin.css">
+        <title>CRUD_Hogar</title>
+        <link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/Images/logo.jpg">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/Styles/vistahogaradmin.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     </head>
 
     <body>
         <nav class="navbar">
             <div class="nav-content">
-                <div class="logo">K<span>C</span></div>
+                <div class="logo">K<span>.CA</span></div>
                 <ul class="menu">
-                    <li><a href="${pageContext.request.contextPath}/Index/vistaadmin.jsp">Menu</a></li>
-                    <li><a href="${pageContext.request.contextPath}/Index/vistaclientesadmin.jsp">Cliente</a></li>
-                    <li><a href="${pageContext.request.contextPath}/Index/vistaproveedoradmin.jsp">Proveedor</a></li>
-                    <li><a href="${pageContext.request.contextPath}/Index/vistacategoria.jsp">Categoria</a></li>
-                    <li><a href="${pageContext.request.contextPath}/Index/metodopagoadmin.jsp">Metodo P.</a></li>
-                    <li><a href="${pageContext.request.contextPath}/Index/vistapedidoadmin.jsp">Pedido</a></li>
-                    <li><a href="${pageContext.request.contextPath}/Index/vistadetallepedidoadmin.jsp">Detalle P.</a></li>
-                    <li><a href="${pageContext.request.contextPath}/Index/VistaFacturaAdmin.jsp">Factura</a></li>
-                    <li><a href="${pageContext.request.contextPath}/Index/vistaempleadoadmin.jsp">Empleado</a></li>
+                    <li><a href="Controlador?menu=VistaAdmin">Menu Administracion</a></li>
                 </ul>
             </div>
         </nav>
 
         <section>
             <div class="container">
-                <h1>Bienvenido al CRUD completo de la entidad <b>Producto</b></h1>
+                <h1>Bienvenido al CRUD completo de la entidad <b>Hogar</b></h1>
 
-                <!--apartado y actualizar para crear el producto-->
+                <!--apartado y actualizar para crear el hogar-->
                 <div class="section">
-                    <h2>Agregar o actualizar producto</h2>
-                    <form>
+                    <h2>Agregar o actualizar hogar</h2>
+                    <form action="Controlador?menu=Hogar" method="POST">
+                        <input type="hidden" name="txtCodigoHogar" value="${hogar.getCodigoHogar()}">
                         <div class="form-row">
                             <div class="form-group">
-                                <input type="text" class="entrada_texto" id="txtNombreProducto" required>
-                                <label class="label-input">Nombre Producto</label>
+                                <input type="text" class="entrada_texto" name="txtTipoHogar" value="${hogar.getTipoHogar()}" required>
+                                <label class="label-input">Tipo Hogar</label>
                             </div>
                             <div class="form-group">
-                                <input type="text" class="entrada_texto" id="txtDescripcion" required>
-                                <label class="label-input">Descripcion</label>
+                                <input type="text" class="entrada_texto" name="txtUbicacion" value="${hogar.getUbicacion()}" required>
+                                <label class="label-input">Ubicación</label>
                             </div>
                             <div class="form-group">
-                                <input type="number" class="entrada_texto" name="precio" step="0.01" min="0"
-                                       placeholder="0.00" id="numPrecio" required>
-                                <label class="label-input-number">Precio en Quetzales</label>
+                                <input type="text" class="entrada_texto" name="txtPrecio" value="${hogar.getPrecio()}" required>
+                                <label class="label-input">Precio en Quetzales</label>
                             </div>
                             <div class="form-group">
-                                <input type="number" class="entrada_texto" name="stock" min="0" placeholder="0"
-                                       required id="numStock">
-                                <label class="label-input-number">Stock</label>
+                                <input type="text" class="entrada_texto" name="txtCodigoProveedor" value="${hogar.getCodigoProveedor()}" required>
+                                <label class="label-input">Codigo del Proveedor</label>
                             </div>
-                            <div class="form-group">
-                                <input type="number" class="entrada_texto" name="codigoProveedor" min="0"
-                                       placeholder="0" required id="numCodCategoria">
-                                <label class="label-input-number">Codigo del Proveedor</label>
-                            </div>
-                            <div class="form-group">
-                                <input type="number" class="entrada_texto" name="stock" min="0" placeholder="0"
-                                       required id="numCodCategoria">
-                                <label class="label-input-number">Codigo de la Categoria</label>
-                            </div>
-
                         </div>
                         <div class="form-row">
-                            <button type="button" class="btn_crear_producto">
-                                <span class="bnt_texto">Crear Producto</span>
+                            <button type="submit" class="btn_actualizar" value="Agregar" name="accion">
+                                <span class="bnt_texto">Crear Hogar</span>
                                 <span class="btn_icono">
                                     <i class="fa-solid fa-plus"></i>
                                 </span>
                             </button>
 
-                            <button type="button" class="btn_actualizar">
+                            <button type="submit" class="btn_actualizar" name="accion" value="Actualizar">
                                 <span class="bnt_texto">Actualizar</span>
                                 <span class="btn_icono">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </span>
                             </button>
                         </div>
-
                     </form>
                 </div>
 
-                <!-- el buscar y listar -->
                 <div class="section">
-                    <h2>Lista</h2>
-                    <!-- 
-                    <form>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <input type="number" class="entrada_texto" name="id" min="1" placeholder="0"
-                                    required id="numBuscarCodProducto">
-                                <label class="label-input-number">ID del producto a buscar</label>
+                    <h2>Lista y Buscar</h2>
+                    <form action="Controlador?menu=Hogar" method="POST" class="search-section">
+                        <div class="form-group search-group">
+                            <input type="text" class="entrada_texto search-input" name="txtBuscarId" placeholder="">
+                            <label class="label-input">Buscar Hogar.</label>
+                            <div class="search-icon">
+                                <i class="fa-solid fa-search"></i>
                             </div>
                         </div>
-                        <button type="button" class="btn_buscar">
-                            <span class="bnt_texto">Buscar Producto</span>
+
+                        <button type="submit" name="accion" value="Buscar" style="display:none;"></button>
+
+                        <button type="button" class="btn_eliminar" 
+                                onclick="window.location.href = 'Controlador?menu=Hogar&accion=Listar'">
+                            <span class="bnt_texto">Cancelar</span>
                             <span class="btn_icono">
-                                <i class="fa fa-search"></i></i>
+                                <i class="fa fa-solid fa-x"></i>
                             </span>
                         </button>
-                    </form> -->
+                    </form>
                     <div class="table-container">
                         <table>
                             <thead>
                                 <tr>
-                                    <th scope="col">Codigo del Producto</th>
-                                    <th scope="col">Nombre</th>
-                                    <th scope="col">Descripción</th>
+                                    <th scope="col">Codigo del Hogar</th>
+                                    <th scope="col">Tipo de Hogar</th>
+                                    <th scope="col">Ubicacion del Hogar</th>
                                     <th scope="col">Precio</th>
-                                    <th scope="col">Stock</th>
                                     <th scope="col">Codigo Proveedor</th>
-                                    <th scope="col">Codigo Categoria</th>
                                     <th scope="col">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Pantalon Campana</td>
-                                    <td>Pantalon tonos azules</td>
-                                    <td>Q 250.00</td>
-                                    <td>5</td>
-                                    <td>1</td>
-                                    <td>2</td>
-                                    <td>
-                                        <div class="botonesTabla">
-                                            <button type="button" class="btn_editar" id="btnEditarRegistro">
+                                <c:forEach var="hogares" items="${hogares}"><tr> 
+                                        <td>${hogares.getCodigoHogar()}</td>
+                                        <td>${hogares.getTipoHogar()}</td>
+                                        <td>${hogares.getUbicacion()}</td>
+                                        <td>${hogares.getPrecio()}</td>
+                                        <td>${hogares.getCodigoProveedor()}</td>
+                                        <td>
+                                            <button 
+                                                type="button" 
+                                                class="btn_editar" 
+                                                onclick="window.location.href = 'Controlador?menu=Hogar&accion=Editar&id=${hogares.getCodigoHogar()}'">
                                                 <span class="bnt_texto">Editar</span>
                                                 <span class="btn_icono">
                                                     <i class="fa-solid fa-pen-to-square"></i>
                                                 </span>
                                             </button>
 
-                                            <button type="button" class="btn_eliminar" id="btnEliminarRegistro">
+                                            <button 
+                                                type="button" 
+                                                class="btn_eliminar" 
+                                                onclick="window.location.href = 'Controlador?menu=Hogar&accion=Eliminar&id=${hogares.getCodigoHogar()}'">
                                                 <span class="bnt_texto">Eliminar</span>
                                                 <span class="btn_icono">
-                                                    <i class="fa fa-trash"></i></i>
+                                                    <i class="fa fa-trash"></i>
                                                 </span>
                                             </button>
-                                        </div>
-                                    </td>
-                                </tr>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
                             </tbody>
                         </table>
                     </div>

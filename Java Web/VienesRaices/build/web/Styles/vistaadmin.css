@@ -1,3 +1,19 @@
+:root {
+    --negro: #1c1c1c;
+    --gris-oscuro: #2d2d2d;
+    --gris-medio: #6b6b6b;
+    --gris-claro: #a8a8a8;
+    --hueso: #f5f0e8;
+    --arena: #d4c4a0;
+    --arena-oscuro: #b8a583;
+    --rojo: #c53030;
+    --rojo-claro: #e53e3e;
+    
+    --sombra-arena: rgba(212, 196, 160, 0.3);
+    --sombra-negra: rgba(0, 0, 0, 0.4);
+    --sombra-suave: rgba(0, 0, 0, 0.2);
+    --borde-arena: rgba(212, 196, 160, 0.2);
+}
 * {
     margin: 0;
     padding: 0;
@@ -5,30 +21,24 @@
 }
 
 body {
-    font-family: 'Lato', sans-serif;
-    background-image: url(../Images/negro3.jpeg);
-    background-size: cover;
-    /* Quepa completa dentro del body */
-    background-repeat: no-repeat;
-    /* No repetir */
-    background-position: center top;
-    /* Centrada arriba */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, var(--negro) 0%, var(--gris-oscuro) 100%);
     background-attachment: fixed;
-    /* (Opcional) Efecto parallax */
     min-height: 100vh;
-    color: #212529;
+    color: var(--hueso);
     padding-top: 120px;
 }
 
+/* el nav */
 .navbar {
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
+    background: rgba(28, 28, 28, 0.95);
     backdrop-filter: blur(10px);
     position: fixed;
     top: 0;
     z-index: 9999;
-    padding: 0;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 15px var(--sombra-media);
+    border-bottom: 1px solid var(--borde-sutil);
 }
 
 .nav-content {
@@ -37,14 +47,13 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 30px 30px;
-    width: 100%;
+    padding: 15px 30px;
 }
 
 .logo {
     font-size: 2.5rem;
     font-weight: 900;
-    color: #fff;
+    color: blanchedalmond;
     letter-spacing: 2px;
     user-select: none;
     font-family: 'Lato', sans-serif;
@@ -52,7 +61,7 @@ body {
 }
 
 .logo span {
-    color: #00b7ff;
+    color: white;
 }
 
 .menu {
@@ -60,38 +69,41 @@ body {
     display: flex;
     align-items: center;
     gap: 30px;
-    margin: 0;
-    padding: 0;
     flex: 1;
     justify-content: center;
 }
 
 .menu li a {
-    color: #fff;
+    color: var(--hueso);
     text-decoration: none;
     font-weight: 600;
     font-size: 16px;
     transition: all 0.3s ease;
-    letter-spacing: 1px;
     padding: 8px 16px;
     border-radius: 25px;
 }
 
-.menu li a:hover {
-    color: #fff;
-    background-color: #00b7ff;
-    transform: translateY(-2px);
+.menu li a.get-pro {
+    color: var(--arena);
+    border: 2px solid var(--arena);
+    font-weight: 700;
 }
 
-/*el espacio entre el nav y lo demas*/
+.menu li a:hover,
+.menu li a.get-pro:hover {
+    color: var(--negro);
+    background-color: var(--arena);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(212, 196, 160, 0.3);
+}
+/* El espacio entre el nav y lo demas */
 .container {
     max-width: 1400px;
     margin: 0 auto;
     padding: 100px 30px 50px;
 }
 
-
-/*titulo*/
+/* Titulo */
 .hero {
     text-align: center;
     margin-bottom: 60px;
@@ -100,25 +112,30 @@ body {
 .hero h1 {
     font-size: 3.5rem;
     font-weight: 900;
-    color: #fff;
+    color: var(--hueso);
     margin-bottom: 20px;
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    text-shadow: 2px 2px 10px var(--sombra-negra);
+    letter-spacing: 2px;
 }
-/*subtitulo*/
+
+/* Subtitulo */
 .hero p {
     font-size: 1.2rem;
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--gris-claro);
     max-width: 600px;
     margin: 0 auto;
+    line-height: 1.6;
 }
-/*todos los bloques ordenados en filas y columnas por el grind*/
+
+/* Todos los bloques ordenados en filas y columnas por el grid */
 .dashboard-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
     margin-top: 50px;
 }
-/*boton ir a las vistas*/
+
+/* Boton ir a las vistas */
 .btn_ver_gestion {
     position: relative;
     font-size: 17px;
@@ -127,92 +144,149 @@ body {
     padding: 2em 2.5em;
     display: inline-block;
     cursor: pointer;
-    border-radius: 6em;
-    border: transparent;
-    transition: all 0.2s;
+    border-radius: 25px;
+    border: 2px solid var(--arena);
+    transition: all 0.3s ease;
     font-family: inherit;
-    font-weight: 500;
-    color: black;
-    background-color: white;
+    font-weight: 700;
+    color: var(--negro);
+    background: linear-gradient(45deg, var(--arena), var(--arena-oscuro));
     width: 100%;
     text-align: center;
     min-height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
+    letter-spacing: 1px;
+    overflow: hidden;
+}
+
+.btn_ver_gestion::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, var(--arena-oscuro), var(--arena));
+    transition: all 0.3s ease;
+    z-index: -1;
+    border-radius: 25px;
 }
 
 .btn_ver_gestion:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
-    border: 2px solid #a1c1cec2;
+    box-shadow: 0 10px 25px var(--sombra-arena);
+    text-decoration: none;
+    color: var(--negro);
+    filter: brightness(1.1);
+}
+
+.btn_ver_gestion:hover::before {
+    left: 0;
 }
 
 .btn_ver_gestion:active {
     transform: translateY(-1px);
-    box-shadow: 0 5px 10px rgba(255, 255, 255, 0.2);
+    box-shadow: 0 5px 15px var(--sombra-arena);
 }
 
-.btn_ver_gestion::after {
-    content: "";
-    display: inline-block;
-    height: 100%;
-    width: 100%;
-    border-radius: 100px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    transition: all 0.4s;
-    background-color: #d1d1d1;
-}
-
-.btn_ver_gestion:hover::after {
-    transform: scaleX(1.4) scaleY(1.6);
-    opacity: 0;
-}
-/*Cartas donde esta la info y el boton*/
+/* Cartas donde esta la info y el boton */
 .admin-card {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(45, 45, 45, 0.95);
     border-radius: 20px;
     padding: 30px;
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--borde-arena);
     transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.admin-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, transparent 0%, rgba(212, 196, 160, 0.05) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    border-radius: 20px;
 }
 
 .admin-card:hover {
-    background: rgba(255, 255, 255, 0.08);
-    transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    background: rgba(45, 45, 45, 0.98);
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px var(--sombra-arena);
+    border-color: var(--arena);
 }
-/*carta de fondo donde estan los span*/
+
+.admin-card:hover::after {
+    opacity: 1;
+}
+
+/* Carta de fondo donde estan los span */
 .card-icon {
     width: 60px;
     height: 60px;
-    background: linear-gradient(135deg, #00b7ff, #0095d9);
+    background: linear-gradient(135deg, var(--arena), var(--arena-oscuro));
     border-radius: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 20px;
     font-size: 1.5rem;
-    color: white;
+    color: var(--negro);
     font-weight: bold;
+    box-shadow: 0 4px 15px var(--sombra-arena);
+    transition: all 0.3s ease;
 }
-/*el titulo debajo de las cartas del span*/
+
+.admin-card:hover .card-icon {
+    transform: scale(1.1);
+    filter: brightness(1.1);
+}
+
+/* El titulo debajo de las cartas del span */
 .card-title {
     font-size: 1.3rem;
-    font-weight: 700;
-    color: white;
+    font-weight: 900;
+    color: var(--hueso);
     margin-bottom: 15px;
+    letter-spacing: 1px;
+    background: linear-gradient(45deg, var(--arena), var(--arena-oscuro));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
-/*descripcion de la carta*/
+
+/* Descripcion de la carta */
 .card-description {
     font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--gris-claro);
     margin-bottom: 25px;
-    line-height: 1.5;
+    line-height: 1.6;
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--gris-oscuro);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--arena);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--arena-oscuro);
 }
 
 @media (max-width: 768px) {
@@ -229,9 +303,26 @@ body {
         padding: 100px 20px 50px;
     }
 
-    .btn_crear_producto {
+    .btn_ver_gestion {
         font-size: 15px;
         padding: 1.5em 2em;
         min-height: 70px;
+    }
+
+    .nav-content {
+        padding: 20px;
+    }
+
+    .logo {
+        font-size: 2rem;
+    }
+
+    .menu {
+        gap: 20px;
+    }
+
+    .menu li a {
+        padding: 10px 18px;
+        font-size: 14px;
     }
 }

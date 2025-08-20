@@ -1,6 +1,6 @@
 package com.vienesraices.modelo;
  
-import com.kinalitosclothes.config.Conexion;
+import com.vienesraices.config.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

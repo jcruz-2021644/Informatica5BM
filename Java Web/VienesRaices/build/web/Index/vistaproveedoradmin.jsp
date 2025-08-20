@@ -1,5 +1,5 @@
-vista jsp de producto
-<%-- Document : vistaproductoadmin Created on : 22 jul 2025, 13:12:45 Author : PC --%>
+
+<%-- Document : vistaproveedoradmin Created on : 22 jul 2025, 13:12:45 Author : PC --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
@@ -11,7 +11,7 @@ vista jsp de producto
         <meta http-equiv="X-UA-Compatible" content="IE-edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>CRUD_Proveedor</title>
-        <link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/Images/Logo_K.C.png">
+        <link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/Images/logo.jpg">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/Styles/vistaproveedoradmin.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     </head>
@@ -19,9 +19,9 @@ vista jsp de producto
     <body>
         <nav class="navbar">
             <div class="nav-content">
-                <div class="logo">K<span>CA</span></div>
+                <div class="logo">K<span>.CA</span></div>
                 <ul class="menu">
-                    <li><a href="Controlador?menu=Index">Menu Inicio</a></li>
+                    <li><a href="Controlador?menu=VistaAdmin">Menu Administracion</a></li>
                 </ul>
             </div>
         </nav>
